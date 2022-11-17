@@ -16,55 +16,55 @@ function getComputerChoice() {
     }
 }
 
- let playerSelection= prompt("Choose either Rock, Paper or Scissors");
-let computerSelection= getComputerChoice();
-
- alert(`Computer chose ${computerSelection}` );
-
+ 
 function singleRound(playerSelection, computerSelection) {
         switch(true) {
         
     case ((playerSelection.toLowerCase() === 'rock') && (computerSelection === 'Scissors')) :
             alert('You win! Rock beats Scissors');
-            return  'You win! Rock beats Scissors';
+            return  'You win this round! Rock beats Scissors';
             break;
     case ((playerSelection.toLowerCase() === 'rock') && (computerSelection === 'Paper')):
-            alert('You lose! Paper beats Rock'); 
-                return 'You lose! Paper beats Rock';
+            alert('You lose this round! Paper beats Rock'); 
+                return 'You lose this round! Paper beats Rock';
                 break;
     case ((playerSelection.toLowerCase() === 'paper') && (computerSelection === 'Scissors')):
-            alert('You lose! Scissors beats Paper');
-                return 'You lose! Scissors beats Paper';
+            alert('You lose this round! Scissors beats Paper');
+                return 'You lose this round! Scissors beats Paper';
                 break;
     case ((playerSelection.toLowerCase() === 'paper') && (computerSelection === 'Rock')):
-            alert('You win! Paper beats Rock');
-                return 'You win! Paper beats Rock';
+            alert('You win this round! Paper beats Rock');
+                return 'You win this round! Paper beats Rock';
                 break;
     case ((playerSelection.toLowerCase() === 'scissors') && (computerSelection === 'Rock')) :
-            alert('You lose! Rock beats Scissors');
-                return 'You lose! Rock beats Scissors';
+            alert('You lose this round! Rock beats Scissors');
+                return 'You lose this round! Rock beats Scissors';
                 break;
     case ((playerSelection.toLowerCase() === 'scissors') && (computerSelection === 'Paper')):
-            alert('You win! Scissors beats Paper');
-            return 'You win! Scissors beats Paper';
+            alert('You win this round! Scissors beats Paper');
+            return 'You win this round! Scissors beats Paper';
             break;
         default: 
-                alert(`This is a draw`);
+                alert(`This round is a draw`);
+                return `This round is a draw`;
     }
 }
 
-singleRound(playerSelection, computerSelection);
+
 
 function game() {
         let counter=0;
-        for (let i=1; i<5; i++) {
-                singleRound(playerSelection, getComputerChoice);
-                if (singleRound(playerSelection, getComputerChoice).substring(4,5)==='l') {
-                        counter++ ;
-                } else if (singleRound(playerSelection, getComputerChoice).substring(4,5)=== 'w') {
-                        counter-- ;
+        for (let i=1; i<6; i++) {
+                let playerSelection= prompt("Choose either Rock, Paper or Scissors for this round");
+                let computerSelection= getComputerChoice();
+                alert(`Computer chose ${computerSelection}`);
+                let r=singleRound(playerSelection, computerSelection);
+                if (r.substring(4,5)==='l') {
+                        --counter ;
+                } else if (r.substring(4,5)=== 'w') {
+                        ++counter ;
                 }
-                alert(`Your score right now is ${counter}`);
+                alert(`This is round ${i} of 5,and your score till now is ${counter}`);
         }
         if (counter<0) {
                 alert(`You lost this game`);
